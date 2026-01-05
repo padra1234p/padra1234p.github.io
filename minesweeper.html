@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Minesweeper</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.menu {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    position: relative;
+    width: fit-content;
+    margin: 40px auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    gap: 6px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg,#f0f0f0,#dcdcdc);
+    border-radius: 10px;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2),
+                -2px -2px 5px rgba(255,255,255,0.7);
+}
+
+.cell:hover { transform: scale(1.05); }
+
+.cell.open {
+    background: linear-gradient(145deg,#dcdcdc,#f0f0f0);
+    cursor: default;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2),
+                inset -2px -2px 5px rgba(255,255,255,0.7);
+}
+
+.cell.mine {
+    background: red;
+    color: white;
+    font-size: 24px;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px,1px) rotate(0deg); }
+    25% { transform: translate(-1px,-1px) rotate(-5deg); }
+    50% { transform: translate(1px,-1px) rotate(5deg); }
+    75% { transform: translate(-1px,1px) rotate(-5deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+}
+
+button {
+    padding: 10px 20px;
+    margin: 8px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #84fab0, #8fd3f4);
+    transition: all 0.2s;
+}
+
+button:hover { transform: scale(1.05); }
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    z-index: 999;
+    display: none;
+}
+
+#overlay button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+#confetti {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events: none;
+    z-index:998;
+}
+</style>
+</head>
+<body onclick="initSounds()">
+
+<div class="menu">
+    <h1>Minesweeper</h1>
+    <div class="grid" id="grid"></div>
+    <button onclick="retry()">Retry</button>
+    <button onclick="location.href='index.html'">Back to Menu</button>
+</div>
+
+<div id="overlay">
+    <div id="message"></div>
+    <button onclick="retryOverlay()">Try Again</button>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script src="minesweeper.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tic Tac Toe</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(145deg,#f0f0f0,#dcdcdc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.2s;
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.2),
+                -3px -3px 6px rgba(255,255,255,0.7);
+}
+
+.cell:hover {
+    transform: scale(1.05);
+}
+
+#info {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="menu">
+    <h1>Tic Tac Toe</h1>
+    <div id="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+    </div>
+    <div id="info"></div>
+    <button onclick="location.href='index.html'">Back to Menu</button>
+</div>
+
+<script src="rsdg.js"></script>
+</body>
+</html>
